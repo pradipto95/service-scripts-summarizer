@@ -1,0 +1,15 @@
+[Unit]
+Description=Watchdog service
+After=network.target
+
+[Service]
+ExecStart=/home/summaruser/auto_summary_scripts/bin/python -u watch.py
+WorkingDirectory=/home/summaruser/auto_summary_scripts/
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=watch.service
+Restart=always
+User=summaruser
+
+[Install]
+WantedBy=multi-user.target

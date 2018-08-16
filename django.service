@@ -1,0 +1,15 @@
+[Unit]
+Description=Django service
+After=network.target
+
+[Service]
+ExecStart=/home/djangouser/djangoenv/bin/python -u manage.py runserver 192.168.0.182:8000
+WorkingDirectory=/home/djangouser/djangoenv/Django-Project/
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=django.service
+Restart=always
+User=djangouser
+
+[Install]
+WantedBy=multi-user.target

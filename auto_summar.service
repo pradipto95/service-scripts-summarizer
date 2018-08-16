@@ -1,0 +1,16 @@
+
+[Unit]
+Description=Auto summary service
+After=network.target
+
+[Service]
+ExecStart=/home/summaruser/auto_summary_scripts/bin/python -u auto_summar.py
+WorkingDirectory=/home/summaruser/auto_summary_scripts/
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=auto_summar.service
+Restart=always
+User=summaruser
+
+[Install]
+WantedBy=multi-user.target
